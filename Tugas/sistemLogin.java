@@ -3,12 +3,8 @@ import java.util.Scanner;
 public class sistemLogin {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        final String LAST_THREE_NIM = "349";
-        final String VALID_ADMIN_USERNAME = "Admin" + LAST_THREE_NIM;
-        final String VALID_ADMIN_PASSWORD = "Password" + LAST_THREE_NIM;
-        final String VALID_STUDENT_NAME = "Dhea Rengganis";
-        final String VALID_STUDENT_NIM = "202410370110349";
+        Admin admin = new Admin();
+        Mahasiswa mahasiswa = new Mahasiswa();
 
         System.out.println("Pilih Login: ");
         System.out.println("1. Admin");
@@ -23,11 +19,13 @@ public class sistemLogin {
             String username = scanner.nextLine();
             System.out.print("Masukkan Password: ");
             String password = scanner.nextLine();
-            if(username.equals(VALID_ADMIN_USERNAME) && password.equals(VALID_ADMIN_PASSWORD)){
+
+            if(admin.login(username, password)){
                 System.out.println("Login Admin berhasil");
             } else {
-                System.out.println("Login gagal! Username atau password salah");
+                System.out.println("Login gagal! username atau password salah");
             }
+
         } else if(choice == 2){
             // Login sebagai mahasiswa
             System.out.print("Masukkan Nama: ");
@@ -35,10 +33,9 @@ public class sistemLogin {
             System.out.print("Masukkan Nim: ");
             String nim = scanner.nextLine();
 
-            if(username.equals(VALID_STUDENT_NAME) && nim.equals(VALID_STUDENT_NIM)){
+            if(mahasiswa.login(username, nim)){
                 System.out.println("Login mahasiswa berhasil");
-                System.out.println("Nma: " + username);
-                System.out.println("Nim: " + nim);
+                mahasiswa.displayInfo();
             } else {
                 System.out.println("Login gagal! Nama atau Nim salah.");
             }

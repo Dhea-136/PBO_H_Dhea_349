@@ -1,18 +1,20 @@
-public class Mahasiswa {
-    private String nama;
-    private String nim;
+public class Mahasiswa extends User {
+    public Mahasiswa(String nama, String nim){
+        super(nama, nim);
+    }
 
     public Mahasiswa(){
-        this.nama = "Dhea Rengganis";
-        this.nim = "202410370110349";
+        super("Dhea Rengganis", "202410370110349");
     }
 
+    @Override
     public boolean login(String inputNama, String inputNim){
-        return inputNama.equals(nama) && inputNim.equals(nim);
+        return inputNama.equals(getNama()) && inputNim.equals(getNim());
     }
 
+    @Override
     public void displayInfo(){
-        System.out.println("Nama: " + nama);
-        System.out.println("Nim: " + nim);
+        System.out.println("Login Mahasiswa berhasil!");
+        super.displayInfo();
     }
 }

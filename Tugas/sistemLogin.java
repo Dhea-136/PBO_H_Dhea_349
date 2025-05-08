@@ -21,7 +21,7 @@ public class sistemLogin {
             String password = scanner.nextLine();
 
             if(admin.login(username, password)){
-                System.out.println("Login Admin berhasil");
+                admin.displayInfo();
             } else {
                 System.out.println("Login gagal! username atau password salah");
             }
@@ -34,7 +34,6 @@ public class sistemLogin {
             String nim = scanner.nextLine();
 
             if(mahasiswa.login(username, nim)){
-                System.out.println("Login mahasiswa berhasil");
                 mahasiswa.displayInfo();
             } else {
                 System.out.println("Login gagal! Nama atau Nim salah.");
